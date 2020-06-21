@@ -42,6 +42,11 @@ public class JsonResult {
         this.msg = msg;
     }
 
+    public JsonResult(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
     public static JsonResult success() {
         return new JsonResult(HttpServletResponse.SC_OK, null);
     }
@@ -52,5 +57,9 @@ public class JsonResult {
 
     public static JsonResult fail(Object data, String msg) {
         return new JsonResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, data, msg);
+    }
+
+    public static JsonResult fail(String msg) {
+        return new JsonResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, msg);
     }
 }

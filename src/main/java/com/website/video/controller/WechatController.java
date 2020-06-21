@@ -24,7 +24,7 @@ public class WechatController {
     public JsonResult login(@RequestParam(value = "access_page", required = true) String accesPage) throws UnsupportedEncodingException {
         String redirectUrl = wechatConfig.getOpenRedirectUrl();
         String callbackUrl = URLEncoder.encode(redirectUrl, "GBK");
-        String qrcodeUrl = String.format(wechatConfig.getOpenQrUrl(), wechatConfig.getOpenQrUrl(), callbackUrl, accesPage);
+        String qrcodeUrl = String.format(wechatConfig.getOpenQrUrl(), wechatConfig.getOpenAppid(), callbackUrl, accesPage);
         return JsonResult.success(qrcodeUrl);
     }
 }
